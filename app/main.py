@@ -1,30 +1,25 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
     if (not isinstance(cat_age, (int, float))
             or not isinstance(dog_age, (int, float))):
-        raise TypeError
-    cat_age = int(cat_age)
-    dog_age = int(dog_age)
-    list_of_years = [15, 9, 4]
-    result = [0, 0]
+        raise TypeError("Type of age must be int or float")
+    dict_years = {"cat": [15, 9, 4], "dog": [15, 9, 5]}
+    return [
+        age_for_animal(cat_age, dict_years["cat"]),
+        age_for_animal(dog_age, dict_years["dog"])
+    ]
+
+
+def age_for_animal(age: int, list_of_years: list) -> int:
+    age = int(age)
+    result = 0
     for i in list_of_years:
-        cat_age -= i
-        if cat_age >= 0:
-            result[0] += 1
+        age -= i
+        if age >= 0:
+            result += 1
         else:
             break
-        while (cat_age >= 0) and i == list_of_years[2]:
-            cat_age -= i
-            if cat_age >= 0:
-                result[0] += 1
-    list_of_years[2] += 1
-    for i in list_of_years:
-        dog_age -= i
-        if dog_age >= 0:
-            result[1] += 1
-        else:
-            break
-        while (dog_age >= 0) and i == list_of_years[2]:
-            dog_age -= i
-            if dog_age >= 0:
-                result[1] += 1
+        while (age >= 0) and i == list_of_years[2]:
+            age -= i
+            if age >= 0:
+                result += 1
     return result
