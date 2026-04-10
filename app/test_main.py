@@ -20,7 +20,7 @@ from app.main import get_human_age
         "Test for a correct value for a dog year.",
     ]
 )
-def test_ages(
+def test_get_human_age_returns_correct_human_age_with_different_args(
         first_year: int,
         second_year: int,
         each_year_cat: int,
@@ -40,7 +40,7 @@ def test_ages(
         "It should raise TypeError if parameter can to int()",
     ]
 )
-def test_should_raise_error(
+def test_get_human_age_raises_type_error_when_args_are_not_int(
         first_year: int,
         second_year: int,
         error: TypeError) -> None:
